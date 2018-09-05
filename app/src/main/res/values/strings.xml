@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NairobiJavaDev</string>
+    <string name="textview">TextView</string>
+    <string name="list_title">Here is our List of Java Developers in Nairobi</string>
+    <string name="username">Olatunji Yusuf</string>
+    <string name="you_only">you only</string>
 </resources>
