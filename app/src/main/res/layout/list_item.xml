@@ -11,7 +11,8 @@
     android:focusable="true"
     app:cardBackgroundColor="@color/colorListBackground">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,27 +20,29 @@
             android:id="@+id/profile_image"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:scaleType="fitXY"
-            android:src="@drawable/dev" />
+            android:src="@drawable/dev"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="89dp"
-            android:layout_marginRight="89dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="sans-serif"
-            android:text="@string/username"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textStyle="bold" />
+            android:textSize="22sp"
+            android:text="example text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            />
+        />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
