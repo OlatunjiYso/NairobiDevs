@@ -1,6 +1,7 @@
 package com.olatunji.nairobijavadev;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,11 +22,11 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
-        public TextView username;
+        public TextView usernameTextview;
 
         public ViewHolder(View itemView){
             super(itemView);
-            username = itemView.findViewById(R.id.username);
+            usernameTextview = itemView.findViewById(R.id.username);
         }
     }
 
@@ -39,7 +40,19 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         Developers developer = developersList.get(position);
-        holder.username.setText(developer.getUsername());
+        final String username = developer.getUsername();
+        final String github = "github/url";
+        holder.usernameTextview.setText(username);
+
+        holder.itemView.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("GITHUB", github);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
