@@ -1,4 +1,4 @@
-package com.olatunji.nairobijavadev;
+package com.olatunji.nairobijavadev.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,9 +7,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.olatunji.nairobijavadev.R;
+import com.olatunji.nairobijavadev.model.Developers;
+import com.olatunji.nairobijavadev.view.DetailActivity;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
+/**
+ * Created by Olatunji on 09/11/2018.
+ */
 
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
 
@@ -23,10 +33,12 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
         public TextView usernameTextview;
+        public ImageView displayPictureImageview;
 
         public ViewHolder(View itemView){
             super(itemView);
-            usernameTextview = itemView.findViewById(R.id.username);
+            usernameTextview = itemView.findViewById(R.id.list_username);
+            displayPictureImageview = itemView.findViewById(R.id.list_profile_image);
         }
     }
 
@@ -41,8 +53,14 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         Developers developer = developersList.get(position);
         final String username = developer.getUsername();
-        final String github = "github/url";
+        final String github = developer.getGithub();
+        final String imageUrl = developer.getImageUrl();
+
         holder.usernameTextview.setText(username);
+        Picasso.with(context)
+                .load(imageUrl)
+                .placeholder(R.drawable.dev)
+                .into(holder.displayPictureImageview);
 
         holder.itemView.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -50,6 +68,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("GITHUB", github);
+                intent.putExtra("IMAGE_URL", imageUrl);
                 context.startActivity(intent);
             }
         });
