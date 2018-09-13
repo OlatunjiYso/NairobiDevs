@@ -10,7 +10,7 @@ import com.olatunji.nairobijavadev.presenter.DeveloperPresenter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DeveloperPresenter developerPresenter = new DeveloperPresenter(MainActivity.this);
+    private final DeveloperPresenter developerPresenter = new DeveloperPresenter(this);
 
 
     @Override

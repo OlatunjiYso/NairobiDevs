@@ -23,10 +23,10 @@ import java.util.List;
 
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
 
-    private List<Developers> developersList;
-    private Context context;
+    private final List<Developers> developersList;
+    private final Context context;
 
-    public DevListAdapter(List<Developers> developersList, Context context){
+    public DevListAdapter(List<Developers> developersList, Context context) {
         this.developersList = developersList;
         this.context = context;
     }
@@ -35,7 +35,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         public TextView usernameTextview;
         public ImageView displayPictureImageview;
 
-        public ViewHolder(View itemView){
+        public ViewHolder(View itemView) {
             super(itemView);
             usernameTextview = itemView.findViewById(R.id.list_username);
             displayPictureImageview = itemView.findViewById(R.id.list_profile_image);
@@ -43,14 +43,14 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Developers developer = developersList.get(position);
         final String username = developer.getUsername();
         final String github = developer.getGithub();
@@ -62,7 +62,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
                 .placeholder(R.drawable.dev)
                 .into(holder.displayPictureImageview);
 
-        holder.itemView.setOnClickListener( new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
@@ -75,7 +75,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return developersList.size();
     }
 }
