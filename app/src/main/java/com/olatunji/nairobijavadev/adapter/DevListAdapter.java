@@ -15,7 +15,7 @@ import com.olatunji.nairobijavadev.model.Developers;
 import com.olatunji.nairobijavadev.view.DetailActivity;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Olatunji on 09/11/2018.
@@ -23,19 +23,19 @@ import java.util.List;
 
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
 
-    private List<Developers> developersList;
-    private Context context;
+    private final ArrayList<Developers> developersList;
+    private final Context context;
 
-    public DevListAdapter(List<Developers> developersList, Context context){
+    public DevListAdapter(ArrayList<Developers> developersList, Context context) {
         this.developersList = developersList;
         this.context = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
-        public TextView usernameTextview;
-        public ImageView displayPictureImageview;
+    class ViewHolder extends RecyclerView.ViewHolder  {
+         TextView usernameTextview;
+         ImageView displayPictureImageview;
 
-        public ViewHolder(View itemView){
+         ViewHolder(View itemView) {
             super(itemView);
             usernameTextview = itemView.findViewById(R.id.list_username);
             displayPictureImageview = itemView.findViewById(R.id.list_profile_image);
@@ -43,14 +43,14 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Developers developer = developersList.get(position);
         final String username = developer.getUsername();
         final String github = developer.getGithub();
@@ -62,7 +62,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
                 .placeholder(R.drawable.dev)
                 .into(holder.displayPictureImageview);
 
-        holder.itemView.setOnClickListener( new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
@@ -75,7 +75,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return developersList.size();
     }
 }
