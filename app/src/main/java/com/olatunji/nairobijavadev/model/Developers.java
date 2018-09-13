@@ -8,27 +8,28 @@ import com.google.gson.annotations.SerializedName;
 
 public class Developers {
     @SerializedName("login")
-    private String username;
+    private final String username;
 
     @SerializedName("html_url")
-    private String github;
+    private final String github;
 
     @SerializedName("avatar_url")
-    private String imageUrl;
+    private final String imageUrl;
 
-    public Developers(String username, String github, String imageUrl){
+    public Developers(String username, String github, String imageUrl) {
         this.username = username;
         this.imageUrl = imageUrl;
         this.github = github;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public String getGithub() { return github; }
+    public String getGithub() {
+        return github; }
 
-    public String getImageUrl(){
+    public String getImageUrl() {
         return imageUrl;
     }
 }

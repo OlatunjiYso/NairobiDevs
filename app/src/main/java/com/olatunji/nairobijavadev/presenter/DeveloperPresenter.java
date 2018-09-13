@@ -3,6 +3,7 @@ package com.olatunji.nairobijavadev.presenter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.olatunji.nairobijavadev.adapter.DevListAdapter;
 import com.olatunji.nairobijavadev.model.Developers;
@@ -17,7 +18,7 @@ import retrofit2.Response;
 
 public class DeveloperPresenter {
     private DeveloperService developerService;
-    private Context context;
+    private final Context context;
 
     public DeveloperPresenter(Context context) {
     this.context = context;
@@ -30,7 +31,7 @@ public class DeveloperPresenter {
         developerService
                 .getApi()
                 .getDevelopersList()
-                .enqueue( new Callback<DevelopersResponse> () {
+                .enqueue(new Callback<DevelopersResponse>() {
 
                     @Override
                     public void onResponse(
@@ -54,7 +55,7 @@ public class DeveloperPresenter {
                         try {
                             throw new InterruptedException("Something went wrong!");
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            Log.e("onFailure", e + "An error occurred");
                         }
 
                     }
