@@ -1,16 +1,14 @@
 package com.olatunji.nairobijavadev.presenter;
 
-import android.content.Context;
+
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.olatunji.nairobijavadev.adapter.DevListAdapter;
 import com.olatunji.nairobijavadev.model.Developers;
 import com.olatunji.nairobijavadev.model.DevelopersResponse;
 import com.olatunji.nairobijavadev.service.DeveloperService;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,16 +16,21 @@ import retrofit2.Response;
 
 public class DeveloperPresenter {
     private DeveloperService developerService;
-    private final Context context;
+    private final View view;
 
-    public DeveloperPresenter(Context context) {
-    this.context = context;
+
+    public DeveloperPresenter(View view) {
+    this.view = view;
     if (this.developerService == null) {
         this.developerService = new DeveloperService();
     }
     }
 
-    public void getDevelopers(final RecyclerView recyclerView) {
+    public interface View {
+        void displayDevelopersList(ArrayList<Developers> list);
+
+    }
+    public void getDevelopers() {
         developerService
                 .getApi()
                 .getDevelopersList()
@@ -38,15 +41,14 @@ public class DeveloperPresenter {
                             @NonNull Call<DevelopersResponse> call,
                             @NonNull Response<DevelopersResponse> response
                     ) {
-                        List<Developers> developersList =
-                                response.body().getDevelopersList();
+                        DevelopersResponse developersResponse = response.body();
+                        ArrayList<Developers> developersList;
 
-                        if (developersList != null) {
-                            RecyclerView.Adapter adapter =
-                                    new DevListAdapter(developersList, context);
-                            recyclerView.setAdapter(adapter);
+                        assert developersResponse != null;
 
-                        }
+                        developersList = developersResponse.getDevelopersList();
+
+                        view.displayDevelopersList(developersList);
                     }
 
                     @Override

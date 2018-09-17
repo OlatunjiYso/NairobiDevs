@@ -3,16 +3,16 @@ package com.olatunji.nairobijavadev.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Olatunji on 11/09/2018.
  */
 public class DevelopersResponse {
     @SerializedName("items")
-    private List<Developers> developersList;
+    private ArrayList<Developers> developersList;
 
-    public List<Developers> getDevelopersList() {
+    public ArrayList<Developers> getDevelopersList() {
         return developersList;
     }
 }

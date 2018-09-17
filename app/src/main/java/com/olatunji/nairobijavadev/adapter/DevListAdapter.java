@@ -15,7 +15,7 @@ import com.olatunji.nairobijavadev.model.Developers;
 import com.olatunji.nairobijavadev.view.DetailActivity;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Olatunji on 09/11/2018.
@@ -23,19 +23,19 @@ import java.util.List;
 
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
 
-    private final List<Developers> developersList;
+    private final ArrayList<Developers> developersList;
     private final Context context;
 
-    public DevListAdapter(List<Developers> developersList, Context context) {
+    public DevListAdapter(ArrayList<Developers> developersList, Context context) {
         this.developersList = developersList;
         this.context = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
-        public TextView usernameTextview;
-        public ImageView displayPictureImageview;
+    class ViewHolder extends RecyclerView.ViewHolder  {
+         TextView usernameTextview;
+         ImageView displayPictureImageview;
 
-        public ViewHolder(View itemView) {
+         ViewHolder(View itemView) {
             super(itemView);
             usernameTextview = itemView.findViewById(R.id.list_username);
             displayPictureImageview = itemView.findViewById(R.id.list_profile_image);
