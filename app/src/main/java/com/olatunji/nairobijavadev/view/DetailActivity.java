@@ -3,6 +3,7 @@ package com.olatunji.nairobijavadev.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView usernameTextView;
     TextView gitUrlTextView;
     ImageView displayPictureImageView;
+    ImageView shareImageView;
     Intent intent;
 
     @Override
@@ -25,8 +27,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private void viewDevDetail() {
         intent = this.getIntent();
-        String username = intent.getStringExtra("USERNAME");
-        String userGitHub = intent.getStringExtra("GITHUB");
+        final String username = intent.getStringExtra("USERNAME");
+        final String userGitHub = intent.getStringExtra("GITHUB");
         String imageUrl = intent.getStringExtra("IMAGE_URL");
         usernameTextView = findViewById(R.id.tv_username);
         gitUrlTextView = findViewById(R.id.tv_giturl);
@@ -37,6 +39,20 @@ public class DetailActivity extends AppCompatActivity {
                 .load(imageUrl)
                 .placeholder(R.drawable.dev)
                 .into(displayPictureImageView);
+
+        shareImageView = (ImageView) findViewById(R.id.iv_share_button);
+
+        shareImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                        "Checkout this awesome developer " + "@" + username + " " + userGitHub);
+                startActivity(Intent.createChooser(shareIntent,
+                        "Share developer " + "@" + username + " profile"));
+            }
+        });
 
     }
 }
