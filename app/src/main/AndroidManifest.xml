@@ -13,13 +13,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:screenOrientation="fullSensor"
+                    />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.DetailActivity"
+            android:screenOrientation="fullSensor"
             android:parentActivityName=".view.MainActivity">
 
         </activity>
