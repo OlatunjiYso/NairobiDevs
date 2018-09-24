@@ -33,10 +33,10 @@ ext{
     jUnitVersion = 4.12
     testRunnerVersion = '1.0.2'
     espressoVersion = '3.0.2'
-    supportSdkVersion = '27.1.0'
+    supportSdkVersion = '27.1.1'
     constraintLayoutVersion = '1.1.2'
     picasoVersion = '2.4.0'
     retrofitVersion = '2.3.0'
     gsonVersion = '2.8.0'
-    annotationsVersion = '27.1.0'
+    annotationsVersion = '27.1.1'
 }

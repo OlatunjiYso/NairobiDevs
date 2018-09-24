@@ -12,6 +12,7 @@ import com.olatunji.nairobijavadev.R;
 import com.olatunji.nairobijavadev.adapter.DevListAdapter;
 import com.olatunji.nairobijavadev.model.Developers;
 import com.olatunji.nairobijavadev.presenter.DeveloperPresenter;
+import com.olatunji.nairobijavadev.util.EspressoIdlingResource;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements DeveloperPresente
             Toast.makeText(this, "Developers list refreshed",
                     Toast.LENGTH_LONG).show();
         }
+        EspressoIdlingResource.decrement();
     }
 
     @Override
@@ -57,7 +59,9 @@ public class MainActivity extends AppCompatActivity implements DeveloperPresente
       if (savedInstanceState != null) {
           developersList = savedInstanceState.getParcelableArrayList(DEVELOPERS_LIST);
           displayDevelopersList(developersList);
+
       } else {
+          EspressoIdlingResource.increment();
           progressDialog = ProgressDialog.show(this, "Kenya Java Developers",
                   "Loading... Please wait!!!", false, false);
           developerPresenter.getDevelopers();
