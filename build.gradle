@@ -39,4 +39,5 @@ ext{
     retrofitVersion = '2.3.0'
     gsonVersion = '2.8.0'
     annotationsVersion = '27.1.1'
+    crashlyticsVersion = '2.9.5'
 }
