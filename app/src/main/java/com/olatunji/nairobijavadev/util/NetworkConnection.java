@@ -11,7 +11,13 @@ public final class NetworkConnection {
     public static boolean connectionStatus(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork == null) {
+            return false;
+        }
+
         return  activeNetwork != null
                 &&
                 activeNetwork.isConnectedOrConnecting()
