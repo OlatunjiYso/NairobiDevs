@@ -2,6 +2,7 @@
 
 <a href="https://codeclimate.com/github/OlatunjiYso/NairobiJavaDev/maintainability"><img src="https://api.codeclimate.com/v1/badges/f5c7e5b75815173057c1/maintainability" /></a>
 
+#### JaCoCo Test Coverage
 ![JaCoCo Test Coverage report](testcoverage.png)
 
 # NairobiJavaDev
