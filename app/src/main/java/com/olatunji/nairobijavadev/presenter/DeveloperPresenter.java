@@ -2,11 +2,11 @@ package com.olatunji.nairobijavadev.presenter;
 
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.olatunji.nairobijavadev.model.Developers;
 import com.olatunji.nairobijavadev.model.DevelopersResponse;
 import com.olatunji.nairobijavadev.service.DeveloperService;
+import com.olatunji.nairobijavadev.view.MainActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class DeveloperPresenter {
     private final View view;
 
 
-    public DeveloperPresenter(View view) {
+    public DeveloperPresenter(MainActivity view) {
     this.view = view;
     if (this.developerService == null) {
         this.developerService = new DeveloperService();
@@ -28,6 +28,7 @@ public class DeveloperPresenter {
 
     public interface View {
         void displayDevelopersList(ArrayList<Developers> list);
+        void displaySlowNetwork();
 
     }
     public void getDevelopers() {
@@ -52,13 +53,10 @@ public class DeveloperPresenter {
                     }
 
                     @Override
+
                     public void onFailure(@NonNull Call<DevelopersResponse> call,
                                           @NonNull Throwable t) {
-                        try {
-                            throw new InterruptedException("Something went wrong!");
-                        } catch (InterruptedException e) {
-                            Log.e("onFailure", e + "An error occurred");
-                        }
+                        view.displaySlowNetwork();
 
                     }
                 });
