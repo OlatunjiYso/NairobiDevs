@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/OlatunjiYso/NairobiJavaDev.svg?style=svg)](https://circleci.com/gh/OlatunjiYso/NairobiJavaDev)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f5c7e5b75815173057c1/test_coverage)](https://codeclimate.com/github/OlatunjiYso/NairobiJavaDev/test_coverage)
+<a href="https://codeclimate.com/github/OlatunjiYso/NairobiJavaDev/maintainability"><img src="https://api.codeclimate.com/v1/badges/f5c7e5b75815173057c1/maintainability" /></a>
+
 # NairobiJavaDev
 An Android app that provides a list of Java developers in Nairobi. Each developer details can be viewed and shared too.
 
