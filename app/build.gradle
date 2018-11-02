@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../config/jacoco.gradle'
 apply from: '../gradle/githooks.gradle'
 apply from: '../config/quality.gradle'
 
@@ -17,25 +18,38 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            //add tests coverage using Jacoco
+            testCoverageEnabled true
+        }
     }
 
-    flavorDimensions "default"
-    productFlavors {
-        mock {
-            applicationIdSuffix = ".mock"
-            dimension "default"
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
         }
-        prod {
-        }
+        animationsDisabled = true
     }
-    sourceSets {
-        mock {
-            java.srcDirs('src/mock/java')
-        }
-        prod {
-            java.srcDirs('src/prod/java')
-        }
-    }
+
+//    flavorDimensions "default"
+//    productFlavors {
+//        mock {
+//            applicationIdSuffix = ".mock"
+//            dimension "default"
+//        }
+//        prod {
+//        }
+//    }
+//    sourceSets {
+//        mock {
+//            java.srcDirs('src/mock/java')
+//        }
+//        prod {
+//            java.srcDirs('src/prod/java')
+//        }
+//    }
 
 }
 
