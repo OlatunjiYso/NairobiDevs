@@ -4,7 +4,6 @@
 
 ![JaCoCo Test Coverage report](testcoverage.png)
 
-
 # NairobiJavaDev
 An Android app that provides a list of Java developers in Nairobi. Each developer details can be viewed and shared too.
 
